@@ -1,8 +1,12 @@
 require 'sinatra'
 require "sinatra/reloader" if development?
 require "sinatra/json"
+require "sinatra/cors"
+
 require './bingo/strip'
 require './bingo/game'
+
+set :allow_origin, "*"
 
 before do
   content_type :json
