@@ -1,8 +1,7 @@
 module Bingo
   class Ticket
 
-    attr_reader :rows
-    attr_reader :available_values
+    attr_reader :rows, :available_values
 
     def initialize(available_values)
       @rows, @available_values = build_rows(3, available_values)

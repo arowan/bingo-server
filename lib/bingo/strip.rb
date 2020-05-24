@@ -1,10 +1,22 @@
+require "redis"
+require "json"
+
 module Bingo
   class Strip
 
     attr_reader :tickets
 
-    def initialize
-      @tickets = build_strip
+    def initialize(game_id, user_id)
+      _redis = Redis.new
+      key = "#{game_id}-#{user_id}"
+      saved = _redis.get(key)
+
+      if saved
+        @tickets = JSON.parse(saved)
+      else
+        @tickets = build_strip
+        _redis.set(key, @tickets.to_json)
+      end
     end
 
     def build_strip
