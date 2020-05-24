@@ -9,15 +9,14 @@ module Bingo
     attr_reader :tickets
 
     def initialize(game_id, user_id)
-      _redis = Redis.new
       key = "#{game_id}-#{user_id}"
-      saved = _redis.get(key)
+      saved = Bingo.redis.get(key)
 
       if saved
         @tickets = JSON.parse(saved)
       else
         @tickets = build_strip
-        _redis.set(key, @tickets.to_json)
+        Bingo.redis.set(key, @tickets.to_json)
       end
     end
 

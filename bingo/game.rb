@@ -3,6 +3,10 @@ require "redis"
 require "json"
 
 module Bingo
+  def self.redis
+    @redis ||= Redis.new
+  end
+
   class GameOver < StandardError; end
   class Game < JSONable
 
@@ -10,8 +14,7 @@ module Bingo
 
     def initialize(game_id)
       @game_id = game_id
-      _redis = Redis.new
-      saved = _redis.get(@game_id)
+      saved = Bingo.redis.get(@game_id)
       if saved
         @available_values, @taken_values = JSON.parse(saved)
       else
@@ -27,8 +30,7 @@ module Bingo
 
       @taken_values << @available_values.shuffle!.pop
 
-      _redis = Redis.new
-      _redis.set(@game_id, JSON.generate([@available_values, @taken_values]))
+      Bingo.redis.set(@game_id, JSON.generate([@available_values, @taken_values]))
 
       @taken_values.last
     end
