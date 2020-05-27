@@ -18,7 +18,7 @@ module Bingo
       if saved
         @available_values, @taken_values = JSON.parse(saved)
       else
-        @available_values = (1..50).to_a
+        @available_values = (1..60).to_a
         @taken_values = []
       end
     end
