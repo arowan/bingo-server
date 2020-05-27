@@ -3,10 +3,14 @@ require "./bingo/row"
 
 module Bingo
   class Ticket < JSONable
-  
-    attr_reader :rows, :available_values
+    attr_accessor :rows, :available_values
 
-    def initialize(available_values)
+    def initialize(rows = [], available_values = [])
+      @rows = rows.map{ |r|  Row.new(r['values']) }
+      @available_values = available_values
+    end
+
+    def generate
       @rows, @available_values = build_rows(3, available_values)
     end
 
@@ -22,5 +26,11 @@ module Bingo
       result.values
     end
 
+    def check(used)
+      result = @rows.reduce(0) do |sum, r|
+        r.check(used) ? sum + 1 : sum
+      end
+      result > 0 ? result : nil
+    end
   end
 end

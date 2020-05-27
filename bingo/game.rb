@@ -18,13 +18,18 @@ module Bingo
       if saved
         @available_values, @taken_values = JSON.parse(saved)
       else
-        @available_values = (1..60).to_a
+        @available_values = (1..(ENV['MAX_NUMBER'] || 60)).to_a
         @taken_values = []
       end
     end
 
-    def check(ticket)
-
+    def check(id)
+      strip = Bingo::Strip.new(id)
+      if !@taken_values.empty?
+        strip.check(@taken_values).uniq
+      else
+        false
+      end
     end
 
     def pick

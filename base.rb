@@ -5,6 +5,7 @@ require "sinatra/cors"
 
 require './bingo/strip'
 require './bingo/game'
+require './bingo/id'
 
 set :allow_origin, "*"
 
@@ -13,7 +14,8 @@ before do
 end
 
 get '/strip/:game_id' do
-  strip = Bingo::Strip.new(params[:game_id], params[:user_id])
+  id = Bingo::Id.get(params[:game_id], params[:user_id])
+  strip = Bingo::Strip.new(id)
   json strip
 end
 
@@ -24,9 +26,15 @@ get '/pick/:game_id' do
   json game
 end
 
-# post '/check/:game_id' do
-#
-#
-#
-#   json {}
-# end
+post '/check/:game_id' do
+  id = params[:ticket_id]
+  game = Bingo::Game.new(params[:game_id])
+  result = game.check(id)
+
+  result = {
+    result: result,
+    nominated_players: Bingo::Teams.nominate(params[:game_id], params[:ticket_id])
+  }
+
+  json result
+end
