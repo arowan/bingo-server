@@ -1,4 +1,4 @@
-require './jsonable'
+require "./jsonable"
 require "redis"
 require "json"
 
@@ -23,6 +23,10 @@ module Bingo
       end
     end
 
+    def check(ticket)
+
+    end
+
     def pick
       if @available_values.empty?
         raise GameOver
@@ -30,7 +34,7 @@ module Bingo
 
       @taken_values << @available_values.shuffle!.pop
 
-      Bingo.redis.set(@game_id, JSON.generate([@available_values, @taken_values]))
+      Bingo.redis.set(@game_id, JSON.generate([@available_values, @taken_values]), {ex: 86400})
 
       @taken_values.last
     end

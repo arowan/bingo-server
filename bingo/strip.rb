@@ -1,22 +1,21 @@
-require './jsonable'
+require "./jsonable"
 require "redis"
 require "json"
-require './bingo/ticket'
+require "./bingo/ticket"
 
 module Bingo
   class Strip < JSONable
-
     attr_reader :tickets
 
-    def initialize(game_id, user_id)
-      key = "#{game_id}-#{user_id}"
+    def initialize(id)
+      key = id
       saved = Bingo.redis.get(key)
 
       if saved
         @tickets = JSON.parse(saved)
       else
         @tickets = build_strip
-        Bingo.redis.set(key, @tickets.to_json)
+        Bingo.redis.set(key, @tickets.to_json, {ex: 86400})
       end
     end
 
@@ -40,10 +39,10 @@ module Bingo
           (20..29).to_a + Array.new(8),
           (30..39).to_a + Array.new(8),
           (40..49).to_a + Array.new(8),
-          (50..59).to_a + Array.new(8),
-          (60..69).to_a + Array.new(8),
-          (70..79).to_a + Array.new(8),
-          (80..89).to_a + Array.new(8),
+          # (50..59).to_a + Array.new(8),
+          # (60..69).to_a + Array.new(8),
+          # (70..79).to_a + Array.new(8),
+          # (80..89).to_a + Array.new(8),
         ]
       end
 

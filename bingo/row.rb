@@ -1,4 +1,5 @@
-require './jsonable'
+require "./jsonable"
+
 module Bingo
   class Row < JSONable
     attr_reader :values

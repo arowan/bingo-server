@@ -1,9 +1,9 @@
-require './jsonable'
-require './bingo/row'
+require "./jsonable"
+require "./bingo/row"
 
 module Bingo
   class Ticket < JSONable
-
+  
     attr_reader :rows, :available_values
 
     def initialize(available_values)

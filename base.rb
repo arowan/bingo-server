@@ -23,3 +23,10 @@ get '/pick/:game_id' do
 
   json game
 end
+
+# post '/check/:game_id' do
+#
+#
+#
+#   json {}
+# end
