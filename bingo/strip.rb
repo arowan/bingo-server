@@ -7,8 +7,8 @@ module Bingo
   class Strip < JSONable
     attr_reader :tickets
 
-    def initialize(id)
-      key = id
+    def initialize(game_id, user_id)
+      key = "#{game_id}-#{user_id}"
       saved = Bingo.redis.get(key)
 
       if saved
