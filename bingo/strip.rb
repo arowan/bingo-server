@@ -40,7 +40,6 @@ module Bingo
 
     private
       def build_available_values
-        puts "MAX_NUMBER: #{ENV['MAX_NUMBER']}"
         ((ENV['MAX_NUMBER'].to_i || 60) / 10).times.map do |i|
           i === 0 ? (1..9).to_a + Array.new(8) : (i * 10..i*10 +9).to_a + Array.new(8)
         end
