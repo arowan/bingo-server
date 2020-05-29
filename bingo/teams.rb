@@ -4,8 +4,8 @@ module Bingo
   class Teams
     class << self
       def get(game_id)
-        blue = Bingo.redis.get("#{game_id}-blue-count").to_i || 0
-        red = Bingo.redis.get("#{game_id}-red-count").to_i || 0
+        blue = Bingo.redis.get("#{game_id}-blue-count").to_i || 1
+        red = Bingo.redis.get("#{game_id}-red-count").to_i || 1
         if blue > red
           id = red + 1
           Bingo.redis.set("#{game_id}-red-count", id)
