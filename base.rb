@@ -27,13 +27,16 @@ get '/pick/:game_id' do
 end
 
 post '/check/:game_id' do
-  id = params[:ticket_id]
+  body = JSON.parse(request.body.read)
+  id = body["ticket_id"]
   game = Bingo::Game.new(params[:game_id])
   result = game.check(id)
 
+
+
   result = {
     result: result,
-    nominated_players: Bingo::Teams.nominate(params[:game_id], params[:ticket_id])
+    nominated_players: Bingo::Teams.nominate(params[:game_id], id)
   }
 
   json result
