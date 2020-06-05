@@ -1,0 +1,14 @@
+development:
+  clients:
+    default:
+      database: bingo
+      hosts:
+        - localhost:27017
+      options:
+        server_selection_timeout: 1
+production:
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URL'] %>
+      options:
+        server_selection_timeout: 5
