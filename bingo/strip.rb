@@ -19,6 +19,7 @@ module Bingo
     end
 
     def check(used)
+      puts 'here'
       tickets.map do |ticket|
         Ticket.check(ticket, used)
       end.compact

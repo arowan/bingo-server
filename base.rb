@@ -14,31 +14,68 @@ before do
   content_type :json
 end
 
-get '/strip/:game_id/:user_id' do
-  id = Bingo::Id.get(params[:game_id], params[:user_id])
-  strip = Bingo::Strip.new(id)
-  json strip
+post '/player' do
+  begin
+    body = JSON.parse(request.body.read)
+    player = Bingo::Player.create({ game_id: body["game_id"], nickname: body["nickname"] })
+    unless player.valid?
+      status 400
+    end
+  rescue => error
+    status 500
+    json error.message
+  end
+  json player
 end
 
-get '/pick/:game_id' do
-  game = Bingo::Game.new(params[:game_id])
-  game.pick
+get '/player/:id' do
+  begin
+    player = Bingo::Player.find(params[:id])
+  rescue Mongoid::Errors::DocumentNotFound
+    status 404
+  end
+  json player
+end
 
+get '/player/:id/check' do
+  begin
+    player = Bingo::Player.find(params[:id])
+  rescue Mongoid::Errors::DocumentNotFound
+    status 404
+  end
+  json player.check 
+end
+
+get '/player/:id/nominate' do
+  begin
+    player = Bingo::Player.find(params[:id])
+    json player.nominate
+  rescue Mongoid::Errors::DocumentNotFound
+    status 404
+  end
+end
+
+post '/game' do
+  begin
+    game = Bingo::Game.create
+  rescue => error
+    status 500
+    json error.message
+  end
   json game
 end
 
-post '/check/:game_id' do
-  body = JSON.parse(request.body.read)
-  id = body["ticket_id"]
-  game = Bingo::Game.new(params[:game_id])
-  result = game.check(id)
+put '/game/:id/pick' do
+  begin
+    game = Bingo::Game.find(params[:id])
+  rescue Mongoid::Errors::DocumentNotFound
+    status 404
+  end
 
+  begin
+    game.pick!
+  rescue ::Bingo::GameOver
+  end
 
-
-  result = {
-    result: result,
-    nominated_players: Bingo::Teams.nominate(params[:game_id], id)
-  }
-
-  json result
+  json game
 end

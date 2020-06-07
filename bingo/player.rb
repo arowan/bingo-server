@@ -7,6 +7,11 @@ module Bingo
     field :nickname, type: String
     field :team, type: String
 
+    validates_presence_of :game_id
+    validates_presence_of :nickname
+
+    validates_uniqueness_of :nickname, scope: [:game_id]
+
     index({created_at: 1}, {expire_after_seconds: 1.day})
 
     embeds_one :strip
@@ -15,6 +20,25 @@ module Bingo
       player.strip = Strip.new
       if player.game_id
         player.team = assign_team(player.game_id)
+      end
+    end
+
+    def check
+      game = Bingo::Game.find_by({game_id:  game_id})
+      if !game.taken_values.empty?
+        return { result: self.strip.check(game.taken_values).uniq! }
+      end
+      return false
+    end
+
+    def nominate
+      players = self.class.where({game_id: game_id})
+      players.reduce({}) do |grouped, player|
+        if player != self
+          team = grouped[player.team] || []
+          grouped[player.team] = team.shuffle << player.nickname
+        end
+        grouped
       end
     end
 

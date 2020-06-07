@@ -1,6 +1,4 @@
 require "./bingo/game"
-# require "./bingo/teams"
-# require "./bingo/id"
 require "./bingo/player"
 require "./bingo/strip"
 require "./bingo/ticket"
