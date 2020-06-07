@@ -1,0 +1,94 @@
+{
+  "selection": [
+    {
+      "title": "High Card",
+      "description": "Place 3 cards on the table each player picks a card"
+    },
+    {
+      "title": "House",
+      "description": "Players will need to get something from their house and bring it back",
+      "items": [
+        "Team wears something of their team colours",
+        "Tea Bag",
+        "Team to wear a hat",
+        "Iron",
+        "Battery",
+        "Ketchup",
+        "FlipFlops",
+        "Sun Glasses",
+        "Coat",
+        "Soap",
+        "Mug"
+      ]
+    },
+    {
+      "title": "Finish it",
+      "description": "First to finish their drink"
+    },
+    {
+      "title": "Bottle flip",
+      "description": "First to flip a bottle with water in successfully"
+    },
+    {
+      "title": "Food face race",
+      "description": "First one to place an item of food on their forehead and eat it without using your hands or the item falling off their face."
+    },
+    {
+      "title": "Toliet roll mayhem",
+      "description": "First to unroll and roll back up a roll of toliet paper."
+    },
+    {
+      "disabled": true,
+      "title": "Draw Something",
+      "description": "Each player will sketch something out and there team will have to guess what it is.",
+      "items": [
+        "Rocket ship",
+        "Coffee Bean",
+        "Bananna",
+        "Candle",
+        "Car",
+        "Bus",
+        "Sun",
+        "Tree",
+        "Screwdriver",
+        "Giraffe",
+        "Penguin",
+        "Lion",
+        "Dog",
+        "Cat"
+      ]
+    },
+    {
+      "title": "Crocodile",
+      "description": "Head to head dentistry."
+    },
+    {
+      "title": "Waterfall",
+      "description": "Team boat race."
+    },
+    {
+      "title": "Sing it",
+      "description": "Head to head contender has to sing a song which their team will have to guess the song and artist."
+    },
+    {
+      "title": "Alliteration",
+      "description": "Players will be given a letter and will need to give a celebrity/Character name which the first letter of their first name and surname match - Mike Myers - Mickey Mouse."
+    },
+    {
+      "title": "Rock Paper Scissors",
+      "description": "Best of 3."
+    },
+    {
+      "title": "Disco",
+      "description": "head to head, Caller picks the best contender dancer."
+    },
+    {
+      "title": "Costume change",
+      "description": "head to head, first back after a full costume change wins."
+    },
+    {
+      "title": "Tea bag toss",
+      "description": "First to throw a tea bag into a mug from a \"social distance\" away."
+    }
+  ]
+}

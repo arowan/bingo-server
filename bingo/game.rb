@@ -5,7 +5,7 @@ module Bingo
     include ::Mongoid::Document
 
     field :game_id, type: Integer, default: -> { rand(1000..99999) }
-    field :available_values, type: Array, default: -> { (1..(ENV['MAX_NUMBER'] ? ENV['MAX_NUMBER'].to_i : 60)).to_a  }
+    field :available_values, type: Array, default: -> { (1..(ENV['MAX_NUMBER'] ? ENV['MAX_NUMBER'].to_i : 60) - 1).to_a  }
     field :taken_values, type: Array, default: -> { [] }
     field :scores, type: Hash, default: -> { { blue: 0, red: 0 } }
 
@@ -27,6 +27,12 @@ module Bingo
     def point_for_team!(team)
       self.scores[team.to_sym] = self.scores[team.to_sym] + 1
       self.save
+    end
+
+    def challenges
+      challenges = JSON.load(File.open(File.expand_path('../../challenges.json', __FILE__)))
+      selection = challenges['selection'].reject!{|item| item['disabled'] }
+      { challenges: selection.shuffle.first(3) }
     end
 
   end

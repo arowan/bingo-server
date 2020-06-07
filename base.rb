@@ -43,7 +43,7 @@ get '/player/:id/check' do
   rescue Mongoid::Errors::DocumentNotFound
     status 404
   end
-  json player.check 
+  json player.check
 end
 
 get '/player/:id/nominate' do
@@ -78,4 +78,14 @@ put '/game/:id/pick' do
   end
 
   json game
+end
+
+get '/game/:id/challenges' do
+  begin
+    game = Bingo::Game.find(params[:id])
+  rescue Mongoid::Errors::DocumentNotFound
+    status 404
+  end
+
+  json  game.challenges
 end
