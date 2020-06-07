@@ -26,7 +26,7 @@ module Bingo
     def check
       game = Bingo::Game.find_by({game_id:  game_id})
       if !game.taken_values.empty?
-        return { result: self.strip.check(game.taken_values).uniq! }
+        return { id: self.id.to_s, result: self.strip.check(game.taken_values).uniq! }
       end
       return false
     end

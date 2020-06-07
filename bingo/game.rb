@@ -35,5 +35,15 @@ module Bingo
       { challenges: selection.shuffle.first(3) }
     end
 
+    def players
+      players = Bingo::Player.where({game_id: game_id})
+      grouped = players.reduce({}) do |grouped, player|
+        team = grouped[player.team] || []
+        grouped[player.team] = team << { nickname: player.nickname, id: player._id.to_s }
+        grouped
+      end
+      { players: grouped }
+    end
+
   end
 end

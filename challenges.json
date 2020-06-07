@@ -8,9 +8,9 @@
       "title": "House",
       "description": "Players will need to get something from their house and bring it back",
       "items": [
-        "Team wears something of their team colours",
+        "Something of their team colours",
         "Tea Bag",
-        "Team to wear a hat",
+        "Hat",
         "Iron",
         "Battery",
         "Ketchup",
@@ -72,7 +72,8 @@
     },
     {
       "title": "Alliteration",
-      "description": "Players will be given a letter and will need to give a celebrity/Character name which the first letter of their first name and surname match - Mike Myers - Mickey Mouse."
+      "description": "Players will be given a letter and will need to give a celebrity/Character name which the first letter of their first name and surname match - Mike Myers - Mickey Mouse.",
+      "items": ["C", "D", "F", "K", "L", "M", "P"]
     },
     {
       "title": "Rock Paper Scissors",
