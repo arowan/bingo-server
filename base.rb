@@ -8,8 +8,10 @@ Mongoid.load!(File.join(File.dirname(__FILE__), 'config', 'mongoid.yml'))
 
 require './bingo/bingo'
 
-set :allow_origin, "*"
+set :allow_origin, "http://app.lockdownbingo.xyz http://localhost:3000 http://localhost:3001"
 set :allow_methods, "GET,HEAD,POST,PUT"
+set :allow_headers, "content-type,if-modified-since"
+set :expose_headers, "location,link"
 
 before do
   content_type :json
