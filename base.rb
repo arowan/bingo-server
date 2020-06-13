@@ -25,6 +25,7 @@ post '/player' do
       status 400
     end
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -37,6 +38,7 @@ get '/player/:id' do
   rescue Mongoid::Errors::DocumentNotFound
     status 404
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -49,6 +51,7 @@ get '/player/:id/check' do
   rescue Mongoid::Errors::DocumentNotFound
     status 404
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -62,6 +65,7 @@ get '/player/:id/nominate' do
   rescue Mongoid::Errors::DocumentNotFound
     status 404
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -71,6 +75,7 @@ post '/game' do
   begin
     game = Bingo::Game.create
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -83,6 +88,7 @@ get '/game/:game_id' do
   rescue Mongoid::Errors::DocumentNotFound
     status 404
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -96,6 +102,7 @@ put '/game/:game_id/pick' do
   rescue Mongoid::Errors::DocumentNotFound
     status 404
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -104,6 +111,7 @@ put '/game/:game_id/pick' do
     game.pick!
   rescue ::Bingo::GameOver
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -118,6 +126,7 @@ put '/game/:game_id/point/:team' do
   rescue Mongoid::Errors::DocumentNotFound
     status 404
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -131,6 +140,7 @@ get '/game/:game_id/challenges' do
   rescue Mongoid::Errors::DocumentNotFound
     status 404
   rescue => error
+    puts error
     status 500
     json error.message
   end
@@ -144,6 +154,7 @@ get '/game/:game_id/players' do
   rescue Mongoid::Errors::DocumentNotFound
     status 404
   rescue => error
+    puts error
     status 500
     json error.message
   end
