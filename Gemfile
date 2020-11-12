@@ -13,4 +13,5 @@ gem 'dotenv-rails', groups: [:development, :test]
 group :test do
   gem 'rack-test'
   gem 'rspec'
+  gem 'byebug'
 end
