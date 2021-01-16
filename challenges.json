@@ -65,6 +65,7 @@
       "items": ["C", "D", "F", "K", "L", "M", "P"]
     },
     {
+      "disabled": true,
       "title": "Rock Paper Scissors",
       "description": "Best of 3."
     },
