@@ -8,17 +8,20 @@
       "title": "House",
       "description": "Players will need to get something from their house and bring it back",
       "items": [
-        "Something of their team colours",
-        "Tea Bag",
+        "Tea bag",
         "Hat",
         "Iron",
         "Battery",
         "Ketchup",
-        "FlipFlops",
-        "Sun Glasses",
+        "Sun glasses",
         "Coat",
         "Soap",
-        "Mug"
+        "Mug",
+        "Tea towel",
+        "Mask",
+        "Scarf",
+        "Tape",
+        "Wrapping paper"
       ]
     },
     {
@@ -35,28 +38,12 @@
     },
     {
       "title": "Toliet roll mayhem",
+      "disabled": true,
       "description": "First to unroll and roll back up a roll of toliet paper."
     },
     {
-      "disabled": true,
       "title": "Draw Something",
-      "description": "Each player will sketch something out and there team will have to guess what it is.",
-      "items": [
-        "Rocket ship",
-        "Coffee Bean",
-        "Bananna",
-        "Candle",
-        "Car",
-        "Bus",
-        "Sun",
-        "Tree",
-        "Screwdriver",
-        "Giraffe",
-        "Penguin",
-        "Lion",
-        "Dog",
-        "Cat"
-      ]
+      "description": "Each player will sketch something out, there team will have to guess what it is. Fastest wins."
     },
     {
       "disabled": true,
@@ -64,6 +51,7 @@
       "description": "Head to head dentistry."
     },
     {
+      "disabled": true,
       "title": "Waterfall",
       "description": "Team boat race."
     },
@@ -91,6 +79,32 @@
     {
       "title": "Tea bag toss",
       "description": "First to throw a tea bag into a mug from a \"social distance\" away."
+    },
+    {
+      "title": "Selfie search",
+      "description": "first to show the last selfie they took on their phone."
+    },
+    {
+      "title": "Couple duet",
+      "description": "Sing a duet together, best couple wins. Caller picks the winner."
+    },
+    {
+      "title": "Best impression",
+      "description": "Best impression of this thing wins",
+      "items": [
+        "Dog",
+        "Explorer",
+        "Winning a Oscar",
+        "Car",
+        "Panda",
+        "Boris Johnson",
+        "Donald Trump",
+        "The Queen",
+        "A Gynecologist",
+        "Police Officer",
+        "A blind person in a brothel",
+        "Winning the lottery with an out of date ticket"
+      ]
     }
   ]
 }
